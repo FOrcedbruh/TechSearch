@@ -1,0 +1,15 @@
+[project]
+name = "tech-search"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["aerich>=0.9.0", "fastapi[all]>=0.115.12", "openpyxl>=3.1.5", "pandas>=2.2.3", "tomlkit>=0.13.2", "tortoise-orm[asyncpg]>=0.25.0"]
+
+[tool.mypy]
+strict = true
+
+[tool.aerich]
+tortoise_orm = "app.core.database.db.database_config"
+location = "./app/core/migrations"
+src_folder = "./."
