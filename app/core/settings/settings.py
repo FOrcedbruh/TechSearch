@@ -19,6 +19,11 @@ DB_NAME: str | None = os.environ.get("DB_NAME")
 
 DB_URL: str = f"postgresql+asyncpg://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
 
+# external api settings
+API_KEY: str | None = os.environ.get("TECDOC_AUTH_KEY")
+API_BASE_URL: str | None = os.environ.get("TECDOC_BASE_URL")
+
+
 models: list[str] = [
     "app.models"
 ]
@@ -39,6 +44,12 @@ class DatabaseSettings(BaseModel):
     models: list[str] = models
 
 
+class ExternalAPISettings(BaseSettings):
+    api_key: str = API_KEY
+    base_url: str = API_BASE_URL
+
+
 class Settings(BaseSettings):
     app: AppSettings = AppSettings()
     db: DatabaseSettings = DatabaseSettings()
+    external_api: ExternalAPISettings = ExternalAPISettings()
